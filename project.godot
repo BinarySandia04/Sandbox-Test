@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="Sandbox Game"
+run/main_scene="res://Scenes/Main.tscn"
+boot_splash/image="res://Images/black-bg.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://icon.png"
+
+[debug]
+
+settings/stdout/print_fps=true
+
+[display]
+
+window/size/resizable=false
+window/size/fullscreen=true
+
+[rendering]
+
+threads/thread_model=2
+quality/directional_shadow/size=8192
+quality/shadow_atlas/size=8192
+quality/filters/msaa=2
+environment/default_environment="res://Env/default_env.tres"
