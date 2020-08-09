@@ -29,12 +29,14 @@ public class CameraController : Camera
 
     public override void _Ready()
     {
-        mainNode = GetNode("/root/Main");
+        mainNode = GetNode("/root/Root Node");
         currentSpeed = movingSpeed;
     }
 
     public override void _Process(float delta)
     {
+        if ((bool) mainNode.Get("pausedMovement")) return;
+        
         if (Input.IsKeyPressed((int) KeyList.Shift)) currentSpeed = runningSpeed;
         else currentSpeed = movingSpeed;
 
@@ -66,7 +68,7 @@ public class CameraController : Camera
     
     public override void _Input(InputEvent ev)
     {
-        if (ev.GetType() == typeof(InputEventMouseMotion) && (bool) mainNode.Get("mouseConfined"))
+        if (ev.GetType() == typeof(InputEventMouseMotion) && (bool) mainNode.Get("pausedMovement"))
         {
             // Cogemos el evento de mover el raton
             InputEventMouseMotion mousevent = (InputEventMouseMotion) ev;

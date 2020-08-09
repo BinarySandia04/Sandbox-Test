@@ -3,14 +3,10 @@ using System;
 
 public class GeneralScript : Node
 {
-	public bool mouseConfined = true;
-	
-    public override void _Ready()
-    {
-        Input.SetMouseMode(Input.MouseMode.Captured);
-    }
+	public bool pausedMovement = false;
+	public bool inMenu = true;
 
-    public override void _Input(InputEvent ev)
+	public override void _Input(InputEvent ev)
     {
 	    Type t = ev.GetType();
 	    if (t == typeof(InputEventKey))
@@ -18,10 +14,10 @@ public class GeneralScript : Node
 		    InputEventKey inputKey = (InputEventKey) ev;
 		    if (inputKey.Scancode == (int) KeyList.Escape)
 		    {
-			    if (mouseConfined)
+			    if (pausedMovement)
 			    {
 				    Input.SetMouseMode(Input.MouseMode.Visible);
-				    mouseConfined = false;
+				    pausedMovement = false;
 			    }
 		    }
 	    }
@@ -29,14 +25,18 @@ public class GeneralScript : Node
 	    if (t == typeof(InputEventMouseButton))
 	    {
 		    InputEventMouseButton inputMouse = (InputEventMouseButton) ev;
-		    if (inputMouse.ButtonIndex == (int) ButtonList.Left && inputMouse.IsPressed())
+		    if (inputMouse.IsPressed())
 		    {
-			    if (!mouseConfined)
+			    if (inputMouse.ButtonIndex == (int) ButtonList.Left && !inMenu)
 			    {
-				    Input.SetMouseMode(Input.MouseMode.Captured);
-				    mouseConfined = true;
+				    if (!pausedMovement)
+				    {
+					    Input.SetMouseMode(Input.MouseMode.Captured);
+					    pausedMovement = true;
+				    }
 			    }
 		    }
+		    
 	    }
     }
 }
