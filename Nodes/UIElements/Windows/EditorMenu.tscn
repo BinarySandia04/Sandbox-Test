@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Nodes/UIElements/Windows/EditorMainMenu.cs" type="Script" id=1]
+
+[node name="EditorMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -524.0
+margin_bottom = 100.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+CreateLevelNodePath = "./TabContainer/Open Level/ScrollContainer/VBoxContainer/Button"
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Open Level" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Open Level"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Open Level/ScrollContainer"]
+margin_right = 492.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoLabel" type="Label" parent="TabContainer/Open Level/ScrollContainer/VBoxContainer"]
+margin_top = -1.0
+margin_right = 492.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_horizontal = 3
+text = "No levels loaded yet!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="TabContainer/Open Level/ScrollContainer/VBoxContainer"]
+margin_top = 34.0
+margin_right = 492.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Label" type="Label" parent="TabContainer/Open Level/ScrollContainer/VBoxContainer/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Create a new level"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Export" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Label" type="Label" parent="TabContainer/Export"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Export level"
+__meta__ = {
+"_edit_use_anchors_": false
+}

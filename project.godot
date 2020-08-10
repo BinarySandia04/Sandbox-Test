@@ -21,10 +21,6 @@ boot_splash/image="res://Images/black-bg.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
 window/size/resizable=false

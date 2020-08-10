@@ -1,0 +1,50 @@
+[gd_scene format=2]
+
+[node name="PlayMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -524.0
+margin_bottom = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Create Game" type="Tabs" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Label" type="Label" parent="TabContainer/Create Game"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Create game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Join Game" type="Tabs" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Label" type="Label" parent="TabContainer/Join Game"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Tab2"
+__meta__ = {
+"_edit_use_anchors_": false
+}

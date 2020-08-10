@@ -35,8 +35,6 @@ public class CameraController : Camera
 
     public override void _Process(float delta)
     {
-        if ((bool) mainNode.Get("pausedMovement")) return;
-        
         if (Input.IsKeyPressed((int) KeyList.Shift)) currentSpeed = runningSpeed;
         else currentSpeed = movingSpeed;
 
@@ -85,8 +83,6 @@ public class CameraController : Camera
             // Rotamos el objeto
             RotateObjectLocal(Vector3.Up, _rotationX);
             RotateObjectLocal(Vector3.Right, _rotationY);
-            
-            
         }
     }
 }
