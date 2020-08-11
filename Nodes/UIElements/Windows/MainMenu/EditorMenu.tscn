@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Nodes/UIElements/Windows/EditorMainMenu.cs" type="Script" id=1]
+[ext_resource path="res://Scripts/UI/EditorMainMenu.cs" type="Script" id=1]
 
 [node name="EditorMenu" type="Control"]
 anchor_right = 1.0
@@ -44,9 +44,8 @@ __meta__ = {
 }
 
 [node name="InfoLabel" type="Label" parent="TabContainer/Open Level/ScrollContainer/VBoxContainer"]
-margin_top = -1.0
 margin_right = 492.0
-margin_bottom = 29.0
+margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
 size_flags_horizontal = 3
 text = "No levels loaded yet!"

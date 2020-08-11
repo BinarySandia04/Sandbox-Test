@@ -7,12 +7,14 @@ public class GeneralScript : Node
 	public bool pausedMovement = false;
 	public bool inMenu = true;
 
+	public bool mouseHoveringUI = false;
+
 	[Export] public string GameSpatialPath;
 	[Export] public string EditorSpatialPath;
 
 	[Export] public PackedScene EditorStartNode;
 	
-	private Spatial _GameSpatialNode, _EditorSpatialNode;
+	public Spatial _GameSpatialNode, _EditorSpatialNode;
 	
 	public static GeneralScript Instance;
 	
@@ -20,13 +22,13 @@ public class GeneralScript : Node
 	{
 		Instance = this;
 		Utils.screenSize = OS.GetRealWindowSize();
+		_GameSpatialNode = GetNode(GameSpatialPath) as Spatial;
+		_EditorSpatialNode = GetNode(EditorSpatialPath) as Spatial;
+		
 	}
 
 	public override void _Ready()
 	{
-		_GameSpatialNode = GetNode(GameSpatialPath) as Spatial;
-		_EditorSpatialNode = GetNode(EditorSpatialPath) as Spatial;
-
 		_GameSpatialNode.Visible = false;
 		_EditorSpatialNode.Visible = false;
 
@@ -62,34 +64,36 @@ public class GeneralScript : Node
 	public override void _Input(InputEvent ev)
     {
 	    Type t = ev.GetType();
-	    if (t == typeof(InputEventKey))
-	    {
-		    InputEventKey inputKey = (InputEventKey) ev;
-		    if (inputKey.Scancode == (int) KeyList.Escape)
-		    {
-			    if (pausedMovement)
-			    {
-				    Input.SetMouseMode(Input.MouseMode.Confined);
-				    pausedMovement = false;
-			    }
-		    }
-	    }
-
 	    if (t == typeof(InputEventMouseButton))
 	    {
 		    InputEventMouseButton inputMouse = (InputEventMouseButton) ev;
 		    if (inputMouse.IsPressed())
 		    {
-			    if (inputMouse.ButtonIndex == (int) ButtonList.Left && !inMenu)
+			    if (inputMouse.ButtonIndex == (int) ButtonList.Right && !inMenu && !mouseHoveringUI)
 			    {
 				    if (!pausedMovement)
 				    {
 					    Input.SetMouseMode(Input.MouseMode.Captured);
 					    pausedMovement = true;
 				    }
+				    else
+				    {
+					    Input.SetMouseMode(Input.MouseMode.Confined);
+					    pausedMovement = false;
+				    }
 			    }
 		    }
 		    
 	    }
     }
+	
+	public void MouseEnteredWindow()
+	{
+		mouseHoveringUI = true;
+	}
+
+	public void MouseExitedWindow()
+	{
+		mouseHoveringUI = false;
+	}
 }

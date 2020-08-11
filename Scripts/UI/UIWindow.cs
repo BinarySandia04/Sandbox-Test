@@ -5,23 +5,29 @@ public class UIWindow : Control
 {
     [Export] private string draggabbleContainerPath;
     [Export] private string closeButtonPath;
+    [Export] private string windowContainerPath;
     
     private PanelContainer draggableContainer;
     private Button closeButton;
+    private Control windowContainer;
     
     private bool enteredWindow = false;
     private bool leftClickPressed = false;
 
     [Signal]
     delegate void close_button();
-    
+
+    private GeneralScript generalScript;
     
     public override void _Ready()
     {
+        generalScript = GeneralScript.Instance;
+
         GD.PrintErr("Window ready");
         
         draggableContainer = GetNode("./" + draggabbleContainerPath) as PanelContainer;
         closeButton = GetNode("./" + closeButtonPath) as Button;
+        windowContainer = GetNode("./" + windowContainerPath) as Control;
 
 
         if (draggableContainer is null)
@@ -30,8 +36,9 @@ public class UIWindow : Control
             return;
         }
         
-        draggableContainer.Connect("mouse_entered", this, nameof(MouseEntered));
-        draggableContainer.Connect("mouse_exited", this, nameof(MouseExited));
+        draggableContainer.Connect("mouse_entered", this, nameof(MouseEnteredDrag));
+        draggableContainer.Connect("mouse_exited", this, nameof(MouseExitedDrag));
+
 
         closeButton.Connect("pressed", this, nameof(CloseWindow));
     }
@@ -41,12 +48,12 @@ public class UIWindow : Control
         EmitSignal(nameof(close_button));
     }
     
-    public void MouseEntered()
+    private void MouseEnteredDrag()
     {
         enteredWindow = true;
     }
 
-    public void MouseExited()
+    private void MouseExitedDrag()
     {
         enteredWindow = false;
     }

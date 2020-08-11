@@ -39,22 +39,25 @@ public class CameraController : Camera
         else currentSpeed = movingSpeed;
 
         Vector3 normalTranslation = new Vector3(0, 0, 0);
-	
-        if(Input.IsKeyPressed((int) KeyList.W))
+
+        if (GeneralScript.Instance.pausedMovement)
         {
-            normalTranslation -= GlobalTransform.basis.z * delta * currentSpeed;
-        }
-        if(Input.IsKeyPressed((int) KeyList.S))
-        {
-            normalTranslation += GlobalTransform.basis.z * delta * currentSpeed;
-        }
-        if(Input.IsKeyPressed((int) KeyList.A))
-        {
-            normalTranslation -= GlobalTransform.basis.x * delta * currentSpeed;
-        }
-        if(Input.IsKeyPressed((int) KeyList.D))
-        {
-            normalTranslation += GlobalTransform.basis.x * delta * currentSpeed;
+            if(Input.IsKeyPressed((int) KeyList.W))
+            {
+                normalTranslation -= GlobalTransform.basis.z * delta * currentSpeed;
+            }
+            if(Input.IsKeyPressed((int) KeyList.S))
+            {
+                normalTranslation += GlobalTransform.basis.z * delta * currentSpeed;
+            }
+            if(Input.IsKeyPressed((int) KeyList.A))
+            {
+                normalTranslation -= GlobalTransform.basis.x * delta * currentSpeed;
+            }
+            if(Input.IsKeyPressed((int) KeyList.D))
+            {
+                normalTranslation += GlobalTransform.basis.x * delta * currentSpeed;
+            }
         }
 
         currentMovement = Utils.Lerp(currentMovement, normalTranslation, smoothness);

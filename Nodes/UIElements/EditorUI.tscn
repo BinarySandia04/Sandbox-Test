@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/UI/EditorUI.cs" type="Script" id=1]
+[ext_resource path="res://Nodes/UIElements/Windows/Editor/HirearchyEditorWindow.tscn" type="PackedScene" id=2]
+
+[node name="EditorUI" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+ButtonDownPanelPath = NodePath("Panel")
+ButtonWindowsDictionary = {
+NodePath("Panel/HBoxContainer/Hirearchy"): ExtResource( 2 )
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = -50.0
+margin_right = -25.0
+margin_bottom = -25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hirearchy" type="Button" parent="Panel/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/Hirearchy"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Hirearchy"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

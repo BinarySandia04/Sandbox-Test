@@ -14,7 +14,14 @@ public class EditorMainMenu : Control
     private void CreateLevel()
     {
         MainMenu.Instance.SetVisible(false);
+        UIManager.Instance.HideMainMenuWindows();
+        
         GeneralScript.Instance.StartEditor();
         GeneralScript.Instance.inMenu = false;
+        
+        UIManager.Instance.EditorMenu.Show();
+        GeneralScript.Instance.mouseHoveringUI = false;
+        
+        HirearchyEditorWindow.UpdateHirearchy();
     }
 }

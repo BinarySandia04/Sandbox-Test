@@ -57,14 +57,21 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Nodes\UIElements\Windows\EditorMainMenu.cs" />
+    <Compile Include="Scripts\Editor\HirearchyEditorWindow.cs" />
+    <Compile Include="Scripts\Others\LabelClock.cs" />
+    <Compile Include="Scripts\UI\EditorMainMenu.cs" />
+    <Compile Include="Scripts\UI\EditorUI.cs" />
+    <Compile Include="Scripts\UI\UIManager.cs" />
     <Compile Include="Scripts\UI\UIWindow.cs" />
     <Compile Include="Scripts\CommandSender.cs" />
     <Compile Include="Scripts\UI\MainMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\CameraController.cs" />
     <Compile Include="Scripts\GeneralScript.cs" />
-    <Compile Include="Scripts\Utils.cs" />
+    <Compile Include="Scripts\Others\Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Nodes\UIElements\Windows" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
